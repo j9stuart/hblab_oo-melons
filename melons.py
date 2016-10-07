@@ -1,5 +1,8 @@
 """This file should have our order classes in it."""
 
+from random import randint
+import datetime
+
 class AbstractMelonOrder(object):
     """ """
     def __init__(self, species, qty, order_type, tax):
@@ -12,8 +15,8 @@ class AbstractMelonOrder(object):
 
     def get_total(self):
         """Calculate price."""
-
-        base_price = 5
+        #we had do call self.get_base_price() because it is fetching the base price of that particular instance!
+        base_price = self.get_base_price()
         if self.species.lower() == "christmas melon":
             base_price = base_price * 1.5
 
@@ -26,6 +29,16 @@ class AbstractMelonOrder(object):
 
         self.shipped = True
 
+    def get_base_price(self):
+        # no self.randint because randint is not a instance function
+        base_price = randint(5, 9)
+
+        rush_hour_day = self.datetime.day()
+        rush_hour_time = self.datetime.time()
+
+        if rush_hour_day in set()
+
+        return base_price
 
 class DomesticMelonOrder(AbstractMelonOrder):
     """A domestic (in the US) melon order."""
